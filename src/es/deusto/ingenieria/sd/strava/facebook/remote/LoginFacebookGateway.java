@@ -12,9 +12,8 @@ import java.util.Calendar;
 public class LoginFacebookGateway extends UnicastRemoteObject implements ILoginFacebookGateway {
 	private static final long serialVersionUID = 1L;
 
-	protected static final String URL = "https://free.currconv.com/api/v7/convert?q=USD_EUR,GBP_EUR&compact=ultra&apiKey=d4f1b436d25d00b16f3f";
-	public static float USD_RATE = 0.85f;
-	public static float GBP_RATE = 1.17f;
+	public static String EMAIL = "eva@gmail.com";
+	public static String CONTRASENA = "abc123!";
 	
 	//Attribute for the Singleton pattern
 	public static LoginFacebookGateway instance;
@@ -37,7 +36,7 @@ public class LoginFacebookGateway extends UnicastRemoteObject implements ILoginF
 	}
 
 	private static final void getConversionRates() {
-		System.out.println(" - Getting exchange rates from 'free.currconv.com'....");
+		/*System.out.println(" - Getting exchange rates from 'free.currconv.com'....");
 		
 		try {			
 			HttpURLConnection con = (HttpURLConnection) (new URL(URL).openConnection());			
@@ -66,15 +65,16 @@ public class LoginFacebookGateway extends UnicastRemoteObject implements ILoginF
 		System.out.println(" - Exchange rates obtained (" + dateFormatter.format(Calendar.getInstance().getTime()) + ")!!");
 		System.out.println("\t- EURO to USD rate: " + USD_RATE);
 		System.out.println("\t- EURO to GBP rate: " + GBP_RATE);
+		*/
 	}
 	
-	public float getUSDRate() throws RemoteException {
+	public String getMail() throws RemoteException {
 		getConversionRates();
-		return USD_RATE;
+		return EMAIL;
 	}
 
-	public float getGBPRate() throws RemoteException {
+	public String getContrasena() throws RemoteException {
 		getConversionRates();
-		return GBP_RATE;
+		return CONTRASENA;
 	}
 }

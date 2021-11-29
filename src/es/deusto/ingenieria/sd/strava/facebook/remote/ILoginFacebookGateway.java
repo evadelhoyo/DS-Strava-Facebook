@@ -4,6 +4,6 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface ILoginFacebookGateway extends Remote {
-	public float getUSDRate() throws RemoteException;
-	public float getGBPRate() throws RemoteException;
+	public String getMail() throws RemoteException;
+	public String getContrasena() throws RemoteException;
 }
