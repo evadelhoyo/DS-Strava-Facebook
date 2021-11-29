@@ -2,6 +2,8 @@ package es.deusto.ingenieria.sd.strava.facebook.server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
+import java.io.IOException;
 import java.net.Socket;
 import java.util.StringTokenizer;
 
@@ -27,35 +29,43 @@ public class FacebookService extends Thread {
 	public void run() {
 		//Echo server
 		try {
-			//Read request from the client
-			String data = this.in.readUTF();			
-			System.out.println("   - FacebookService - Received data from '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + data + "'");		
-			
-			//Send response to the client
-			this.out.writeUTF(data.toUpperCase());			
-			System.out.println("   - EchoService - Sent data to '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + data.toUpperCase() + "'");
-		} catch (Exception e) {
-			System.out.println("   # EchoService error" + e.getMessage());
+			// Read request from the client
+			String data = this.in.readUTF();
+			System.out.println("   - FacebookService - Received data from '"
+					+ tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + data + "'");
+
+			// Send response to the client
+			String response = String.valueOf(loginFB(data));
+			this.out.writeUTF(response);
+
+			System.out.println("   - FacebookService - Sent data to '" + tcpSocket.getInetAddress().getHostAddress()
+					+ ":" + tcpSocket.getPort() + "' -> '" + response + "'");
+		} catch (EOFException e) {
+			System.err.println("   # FacebookService - TCPConnection EOF error" + e.getMessage());
+		} catch (IOException e) {
+			System.err.println("   # FacebookService - TCPConnection IO error:" + e.getMessage());
 		} finally {
 			try {
 				tcpSocket.close();
-			} catch (Exception e) {
-				System.out.println("   # EchoService error:" + e.getMessage());
+			} catch (IOException e) {
+				System.err.println("   # FacebookService - TCPConnection IO error:" + e.getMessage());
 			}
 		}
 	}
 	
 	private boolean loginFB(String data) {
 		if(data != null && !data.trim().isEmpty()) {
-			StringTokenizer tokenizador = new StringTokenizer(data, DELIMITER);
+			StringTokenizer tokenizador = new StringTokenizer(data);
 			String email = tokenizador.nextToken();
-			String passHash = tokenizador.nextToken();
 			
 			System.out.println("   - Check if user: " + email + "is valid");
 			
-			//checkear
+			if (email == "eva@gmail.com") {
+				return true;
+			} else {
+				return false;
+			}
 			
-			return true;
 		}
 		return false;
 	}
