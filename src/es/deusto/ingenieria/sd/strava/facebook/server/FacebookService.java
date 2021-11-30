@@ -60,7 +60,8 @@ public class FacebookService extends Thread {
 			
 			System.out.println("   - Check if user: " + email + "is valid");
 			
-			if (email == "eva@gmail.com") {
+			if (email.equals("eva@gmail.com")) {
+				System.out.println("es cierto es est");
 				return true;
 			} else {
 				return false;
