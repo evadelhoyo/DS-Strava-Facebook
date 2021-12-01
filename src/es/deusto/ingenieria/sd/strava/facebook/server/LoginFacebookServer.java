@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.rmi.Naming;
 
-import es.deusto.ingenieria.sd.strava.facebook.remote.LoginFacebookGateway;
-import es.deusto.ingenieria.sd.strava.facebook.remote.ILoginFacebookGateway;
-
 public class LoginFacebookServer {
 
 private static int numClients = 0;

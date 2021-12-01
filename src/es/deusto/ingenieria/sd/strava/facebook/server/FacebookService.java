@@ -57,11 +57,11 @@ public class FacebookService extends Thread {
 		if(data != null && !data.trim().isEmpty()) {
 			StringTokenizer tokenizador = new StringTokenizer(data);
 			String email = tokenizador.nextToken();
+			String comprueba = tokenizador.nextToken();
 			
 			System.out.println("   - Check if user: " + email + "is valid");
 			
-			if (email.equals("eva@gmail.com")) {
-				System.out.println("es cierto es est");
+			if (email.equals(comprueba)) {
 				return true;
 			} else {
 				return false;
