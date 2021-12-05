@@ -14,6 +14,7 @@ private static int numClients = 0;
 			System.exit(1);
 		}
 		
+		System.out.println("siso 1");
 		//args[1] = Server socket port
 		
 		int serverPort = Integer.parseInt(args[1]);

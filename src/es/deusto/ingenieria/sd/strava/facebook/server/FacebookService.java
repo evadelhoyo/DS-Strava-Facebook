@@ -15,8 +15,10 @@ public class FacebookService extends Thread {
 	private DataOutputStream out;
 	private Socket tcpSocket;
 	private static String DELIMITER = "#";
+	
 	public FacebookService(Socket socket) {
 		try {
+			System.out.println("yepa soy lolito gente");
 			this.tcpSocket = socket;
 		    this.in = new DataInputStream(socket.getInputStream());
 			this.out = new DataOutputStream(socket.getOutputStream());
@@ -60,7 +62,7 @@ public class FacebookService extends Thread {
 			String comprueba = tokenizador.nextToken();
 			
 			System.out.println("   - Check if user: " + email + "is valid");
-			
+			System.out.println(email + "    " + comprueba);
 			if (email.equals(comprueba)) {
 				return true;
 			} else {
