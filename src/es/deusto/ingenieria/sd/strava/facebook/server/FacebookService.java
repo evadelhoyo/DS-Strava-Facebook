@@ -18,7 +18,6 @@ public class FacebookService extends Thread {
 	
 	public FacebookService(Socket socket) {
 		try {
-			System.out.println("yepa soy lolito gente");
 			this.tcpSocket = socket;
 		    this.in = new DataInputStream(socket.getInputStream());
 			this.out = new DataOutputStream(socket.getOutputStream());
@@ -57,7 +56,7 @@ public class FacebookService extends Thread {
 	
 	private boolean loginFB(String data) {
 		if(data != null && !data.trim().isEmpty()) {
-			StringTokenizer tokenizador = new StringTokenizer(data);
+			StringTokenizer tokenizador = new StringTokenizer(data, DELIMITER);
 			String email = tokenizador.nextToken();
 			String comprueba = tokenizador.nextToken();
 			
