@@ -6,7 +6,7 @@
 	<property name="export.file" value="Facebook.jar"/>
 	<property name="policy.file" location="security/java.policy"/>	
 	<property name="rmiregistry.IP" value="127.0.0.1"/> 
-	<property name="rmiregistry.port" value="1099"/> 
+	<property name="rmiregistry.port" value="8000"/> 
 	<property name="server.name" value="Facebook"/>
 
 	<path id="classpath">
